@@ -1,0 +1,100 @@
+/* styles.css */
+
+
+/* Basic styling for header, etc. */
+
+.header {
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+}
+
+
+/* Global filter controls */
+
+.controls {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    background: #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-select {
+    margin-top: 0.5rem;
+}
+
+
+/* Section for dynamic tile creation */
+
+.dynamic-tile-controls {
+    padding: 1rem;
+    background: #fafafa;
+    margin-bottom: 1rem;
+}
+
+.tiles-container {
+    /* Grid layout for tiles */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.tile {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.tile-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.delete-tile-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.vis-container {
+    /* Provide some min-height so that the brush doesn't go negative */
+    min-width: 400px;
+    min-height: 250px;
+    margin-top: 0.5rem;
+    position: relative;
+    /* for the tooltip inside */
+}
+
+
+/* Tooltip styling */
+
+.tooltip {
+    position: absolute;
+    background: rgba(50, 50, 50, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.9rem;
+}

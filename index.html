@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniVision Interactive Visualization</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header class="header">
+        <h1>AniVision: Interactive Visualization Platform</h1>
+    </header>
+
+    <!-- Existing filter controls (global) -->
+    <section class="controls">
+        <div class="filter-group">
+            <label for="country-filter">Filter by Production Country:</label>
+            <select id="country-filter" class="filter-select"></select>
+        </div>
+        <div class="filter-group">
+            <label for="year-range-filter">Filter by Production Year Range:</label>
+            <input type="number" id="year-range-start" placeholder="Start Year" />
+            <input type="number" id="year-range-end" placeholder="End Year" />
+            <button id="year-range-apply" class="btn">Apply</button>
+        </div>
+        <div class="filter-group">
+            <label for="compare-movie-a">Compare Movie A:</label>
+            <select id="compare-movie-a" class="filter-select"></select>
+
+            <label for="compare-movie-b">Compare Movie B:</label>
+            <select id="compare-movie-b" class="filter-select"></select>
+            <button id="compare-apply" class="btn">Compare</button>
+        </div>
+    </section>
+
+    <!-- Buttons/controls for creating new tiles -->
+    <section class="dynamic-tile-controls">
+        <h2>Create a New Tile</h2>
+        <label for="tile-type">Tile Type:</label>
+        <select id="tile-type">
+      <option value="time-series">Time Series</option>
+      <option value="map">Map</option>
+    </select>
+
+        <button id="create-tile-btn" class="btn">Add New Tile</button>
+    </section>
+
+    <!-- Container that holds all tiles (both default and newly created) -->
+    <section class="tiles-container" id="tiles-container">
+        <!-- Two default tiles (one time series, one map) with their own controls -->
+        <!-- 1) Default Time Series Tile -->
+        <div class="tile" id="default-time-series-tile">
+            <div class="tile-header">
+                <h2>Default Time Series Tile</h2>
+                <!-- Controls unique to this tile -->
+                <div class="tile-controls">
+                    <label>Variable:</label>
+                    <select class="tile-variable-select">
+            <!-- You can add more numeric columns as needed -->
+            <option value="count">Count</option>
+            <option value="fps">FPS</option>
+            <option value="frames_total">Frames</option>
+          </select>
+
+                    <label>Grouping (Optional):</label>
+                    <select class="tile-group-select">
+            <option value="">(No grouping)</option>
+            <option value="production_country">Production Country</option>
+          </select>
+
+                    <label>Aggregation:</label>
+                    <select class="tile-agg-select">
+            <option value="sum">Sum</option>
+            <option value="mean">Mean</option>
+          </select>
+                </div>
+                <button class="delete-tile-btn">Delete</button>
+            </div>
+            <div class="vis-container" id="default-time-series-chart"></div>
+        </div>
+
+        <!-- 2) Default Map Tile -->
+        <div class="tile" id="default-map-tile">
+            <div class="tile-header">
+                <h2>Default Map Tile</h2>
+                <!-- Controls unique to this tile -->
+                <div class="tile-controls">
+                    <label>Grouping (Optional):</label>
+                    <select class="tile-group-select">
+            <option value="">(No grouping)</option>
+            <!-- If you want to group by organization name, for example -->
+            <option value="orgName">Organization Name</option>
+          </select>
+                </div>
+                <button class="delete-tile-btn">Delete</button>
+            </div>
+            <div class="vis-container" id="default-map-chart"></div>
+        </div>
+    </section>
+
+    <!-- Load scripts in the correct order -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/filterManager.js"></script>
+    <script src="js/timeSeries.js"></script>
+    <script src="js/mapPlot.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
